@@ -1,5 +1,5 @@
 {
-  "name": "light-saas-landing-page",
+  "name": "webforgeplus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,12 +12,11 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.14",
-    "light-saas-landing-page": "file:",
-    "lwebforgeplus": "file:",
-    "next": "1",
+    "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "webforgeplus": "file:"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
