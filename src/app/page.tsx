@@ -1,5 +1,3 @@
-
-
 import { BlogCarousel } from "@/sections/BlogsCarousel";
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
