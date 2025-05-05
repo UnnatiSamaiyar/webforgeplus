@@ -2,9 +2,13 @@ import Spline from '@splinetool/react-spline';
 
 export default function ContactHeader() {
     return (
-        <div className="relative pt-0 h-[90vh] md:h-[80vh] pb-20 md:pt-0 md:pb-0 overflow-x-clip">
-            {/* Background Spline */}
-            <Spline scene="/contactbackground.splinecode" />
+        <div className="relative pt-0 h-[90vh] md:h-[80vh] pb-20 md:pt-0 md:pb-0 overflow-x-clip 
+        bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183ec2,#eaeefe_100%)] md:bg-none">
+            
+            {/* Background Spline – hidden on small screens */}
+            <div className="hidden md:block">
+                <Spline scene="/contactbackground.splinecode" />
+            </div>
 
             {/* Overlapping Text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-0 pointer-events-none">
@@ -15,18 +19,14 @@ export default function ContactHeader() {
                     We&apos;re a creative agency building stunning websites that convert — fast, responsive, and built for impact.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4 pointer-events-auto">
-                    <button
-                        className="btn btn-primary"
-                    >
+                    <a href="#contact-form" className="btn btn-primary">
                         Get in Touch
-                    </button>
-                    <button
-                        className="btn btn-text gap-1">
+                    </a>
+                    <a href="tel:+1234567890" className="btn btn-text gap-1">
                         Call Us
-                    </button>
+                    </a>
                 </div>
             </div>
-
         </div>
     );
 }
