@@ -1,73 +1,33 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import Spline from '@splinetool/react-spline';
 
 export default function AboutHeader() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({
-        x: event.clientX,
-        y: event.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const bubbleCount = 15;
-
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-b from-blue-900 via-blue-600 to-blue-100 text-white">
-      {/* Bubble bunch that follows the cursor */}
-      {[...Array(bubbleCount)].map((_, index) => {
-        const angle = (index / bubbleCount) * 2 * Math.PI;
-        const radius = 30 + Math.random() * 20; // distance from center
+    <div className="relative pt-0 h-[90vh] md:h-[70vh] pb-20 md:pt-0 md:pb-20 overflow-x-clip 
+        bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183ec2,#eaeefe_100%)] md:bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183ec2,#eaeefe_100%)]">
 
-        const offsetX = Math.cos(angle) * radius;
-        const offsetY = Math.sin(angle) * radius;
-
-        const bubbleStyle: React.CSSProperties = {
-          position: "absolute",
-          left: mousePosition.x + offsetX,
-          top: mousePosition.y + offsetY,
-          width: `${8 + Math.random() * 10}px`,
-          height: `${8 + Math.random() * 10}px`,
-          borderRadius: "50%",
-          backgroundColor: `rgba(255, 255, 255, 0.15)`,
-          pointerEvents: "none",
-          transform: `translate(-50%, -50%)`,
-          animation: `fishBubble ${3 + Math.random() * 2}s ease-in-out infinite`,
-        };
-
-        return <div key={index} style={bubbleStyle} className="bubble" />;
-      })}
-
-      <div className="absolute inset-0 flex flex-col justify-center items-center z-10 pointer-events-none">
-        <h1 className="text-5xl font-extrabold text-center text-white drop-shadow-xl">
-          Luxury Feel
-        </h1>
-        <p className="text-xl text-center mt-4 text-white drop-shadow-xl">
-          Experience the movement of luxury in every pixel.
-        </p>
+      {/* Background Spline – hidden on small screens */}
+      <div className="hidden md:block z-50">
+        <Spline scene="/aboutheader.splinecode" />
       </div>
 
-      {/* Custom animation styles */}
-      <style jsx>{`
-        @keyframes fishBubble {
-          0% {
-            transform: translate(-50%, -50%) scale(1);
-          }
-          50% {
-            transform: translate(-50%, -50%) scale(1.2);
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(1);
-          }
-        }
-      `}</style>
+      {/* Overlapping Text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-0 pointer-events-none">
+        <h1 className="text-5xl md:text-6xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001e80] text-transparent bg-clip-text mt-6">
+          More Than Just Pixels — We Engineer Purpose
+        </h1>
+        <p className="mt-4 text-lg md:text-xl text-black/70 max-w-2xl pointer-events-none">
+          From zero to standout — we help brands design, develop, and dominate. Strategy, storytelling, and scalable code.
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 pointer-events-auto">
+          <a href="#contact-form" className="btn btn-primary">
+            Let’s Collaborate
+          </a>
+          <a href="tel:+1234567890" className="btn btn-text gap-1">
+            Schedule a Call
+          </a>
+        </div>
+      </div>
+
     </div>
   );
 }
