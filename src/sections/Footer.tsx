@@ -20,8 +20,8 @@ export const Footer = () => {
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
           <Link href="/terms">Terms of Use</Link>
-          <Link href="">Privacy Policy</Link>
-          <Link href="">Refund Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+          <Link href="/refund-policy">Refund Policy</Link>
         </nav>
         <div className="flex justify-center gap-6 mt-6">
         <IoLogoWhatsapp className="text-2xl" />
