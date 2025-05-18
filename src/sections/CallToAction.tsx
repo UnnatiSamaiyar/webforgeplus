@@ -17,39 +17,43 @@ export const CallToAction = () => {
 
   const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
   // Add this inside CallToAction component, above return
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  const formData = new FormData(e.currentTarget);
+  const data = Object.fromEntries(formData.entries());
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We'll get back to you shortly.",
+        variant: "default", // or "success" if you have variants configured
       });
 
-      if (res.ok) {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. We'll get back to you shortly.",
-          variant: "default", // or "success" if you have variants configured
-        });
-
-        e.target.reset();
-      } else {
-        toast({
-          title: "Something went wrong.",
-          description: "We couldn’t send your message. Please try again later.",
-          variant: "destructive",
-        });
-
-      }
-    } catch (error) {
-      console.error(error);
-      alert("⚠️ An error occurred. Try again.");
+      e.currentTarget.reset();
+    } else {
+      toast({
+        title: "Something went wrong.",
+        description: "We couldn’t send your message. Please try again later.",
+        variant: "destructive",
+      });
     }
-  };
+  } catch (error) {
+    console.error(error);
+    toast({
+      title: "Unexpected Error",
+      description: "Something broke. Try again later.",
+      variant: "destructive",
+    });
+  }
+};
+
 
 
   return (
