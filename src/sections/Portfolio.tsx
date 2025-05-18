@@ -5,6 +5,7 @@ import tubeImage from "@/assets/tube.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
+import ecommerce from '../assets/ecommerce.png'
 
 export const Portfolio = () => {
   const sectionRef = useRef(null);
@@ -37,7 +38,7 @@ export const Portfolio = () => {
             {
               title: "E-commerce Platform",
               tagline: "Drive sales with a seamless shopping experience",
-              image: "",
+              image: ecommerce,
             },
             {
               title: "Corporate Website",
@@ -71,13 +72,15 @@ export const Portfolio = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={20}
-                height={20}
-                className="w-full h-64 object-cover rounded-xl mb-4"
-              />
+              <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p className="text-[#010d3e]">{project.tagline}</p>
               <button className="mt-4 text-blue-500 hover:underline">Explore</button>

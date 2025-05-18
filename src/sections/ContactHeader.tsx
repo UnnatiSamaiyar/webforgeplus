@@ -2,7 +2,7 @@ import Spline from '@splinetool/react-spline';
 
 export default function ContactHeader() {
     return (
-        <div className="relative pt-0 h-[90vh] md:h-[80vh] pb-20 md:pt-0 md:pb-0 overflow-x-clip 
+        <div className="relative pt-0 h-[90vh] md:h-[100vh] pb-20 md:pt-0 md:pb-0 overflow-x-clip 
         bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183ec2,#eaeefe_100%)] md:bg-none">
             
             {/* Background Spline – hidden on small screens */}

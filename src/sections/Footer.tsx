@@ -24,11 +24,25 @@ export const Footer = () => {
           <Link href="/refund-policy">Refund Policy</Link>
         </nav>
         <div className="flex justify-center gap-6 mt-6">
-        <IoLogoWhatsapp className="text-2xl" />
-        <FaLinkedin className="text-2xl" />
+          <a
+            href="https://wa.me/919220644664" // Replace with your actual WhatsApp number in international format
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoWhatsapp className="text-2xl" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/106771089" // Replace with your actual LinkedIn profile URL
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="text-2xl " />
+          </a>
+
         </div>
         <p className="mt-6">&copy; 2025 WebForgePlus, Inc. All rights reserved.
-         
+
         </p>
       </div>
     </footer>

@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import starImage from "@/assets/star.png";
 import springImage from "@/assets/spring.png";
+import { useToast } from "@/hooks/use-toast"
+
 
 export const CallToAction = () => {
   const sectionRef = useRef(null);
@@ -11,8 +13,44 @@ export const CallToAction = () => {
     target: sectionRef,
     offset: ["start end", "end start"],
   });
+  const { toast } = useToast()
 
   const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  // Add this inside CallToAction component, above return
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. We'll get back to you shortly.",
+          variant: "default", // or "success" if you have variants configured
+        });
+
+        e.target.reset();
+      } else {
+        toast({
+          title: "Something went wrong.",
+          description: "We couldn’t send your message. Please try again later.",
+          variant: "destructive",
+        });
+
+      }
+    } catch (error) {
+      console.error(error);
+      alert("⚠️ An error occurred. Try again.");
+    }
+  };
+
 
   return (
     <section
@@ -30,7 +68,7 @@ export const CallToAction = () => {
         {/* Contact Form with Glass Effect */}
         <div className="mt-16 flex justify-center">
           <form
-            action="#"
+            onSubmit={handleSubmit}
             method="POST"
             className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl w-full max-w-2xl"
           >
@@ -108,7 +146,7 @@ export const CallToAction = () => {
               <textarea
                 id="message"
                 name="message"
-                
+
                 required
                 className="w-full mt-2 px-4 py-2 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-[#001e80]"
               ></textarea>
