@@ -8,12 +8,12 @@ import pyramidImage from "@/assets/pyramid.png";
 import tubeImage from "@/assets/tube.png";
 
 // SVG components (inline, optimal for small assets)
-import Appdev from "@/assets/portfolio-cards/app-dev.svg";
-import Ecommerce from "@/assets/portfolio-cards/ecommerce.svg";
-import Landingpage from "@/assets/portfolio-cards/landing-page.svg";
-import Corporate from "@/assets/portfolio-cards/corporate.svg";
-import Saas from "@/assets/portfolio-cards/saaspage.svg";
-import Webapp from "@/assets/portfolio-cards/webapp.svg";
+import Appdev from "@/assets/portfolio-cards/app-dev.png";
+import Ecommerce from "@/assets/portfolio-cards/ecommerce.png";
+import Landingpage from "@/assets/portfolio-cards/landing-page.png";
+import Corporate from "@/assets/portfolio-cards/corporate.png";
+import Saas from "@/assets/portfolio-cards/saaspage.png";
+import Webapp from "@/assets/portfolio-cards/webapp.png";
 
 export const Portfolio = () => {
 
@@ -31,19 +31,19 @@ export const Portfolio = () => {
       title: "Landing Page",
       slug: "landing-page",
       tagline: "High-converting pages that capture leads",
-      image: <Landingpage className="w-full h-full" />,
+      image: Landingpage ,
     },
     {
       title: "Corporate Website",
       slug: "corporate-website",
       tagline: "Professional websites for powerful brands",
-      image: <Corporate className="w-full h-full" />,
+      image: Corporate ,
     },
     {
       title: "E-commerce Platform",
       slug: "ecommerce-platform",
       tagline: "Drive sales with a seamless shopping experience",
-      image: <Ecommerce className="w-full h-full" />,
+      image: Ecommerce,
     },
     
   ];
@@ -53,19 +53,19 @@ export const Portfolio = () => {
       title: "SaaS Product",
       slug: "saas-product",
       tagline: "Optimized for performance and scaling",
-      image: <Saas className="w-full h-full" />,
+      image: Saas,
     },
     {
       title: "Web Application",
       slug: "web-application",
       tagline: "Complex solutions with simple UX",
-      image: <Webapp className="w-full h-full" />,
+      image: Webapp,
     },
     {
       title: "Mobile App",
       slug: "mobile-app",
       tagline: "User-centric app design for engagement",
-      image: <Appdev className="w-full h-full" />,
+      image: Appdev,
     },
   ]
 
@@ -96,7 +96,7 @@ export const Portfolio = () => {
               className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
               <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-                {typeof project.image === "string" ? (
+                
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -106,9 +106,6 @@ export const Portfolio = () => {
                     loading={idx < 3 ? "eager" : "lazy"}
                     priority={idx < 3}
                   />
-                ) : (
-                  project.image
-                )}
               </div>
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p className="text-[#010d3e]">{project.tagline}</p>
@@ -125,7 +122,7 @@ export const Portfolio = () => {
               className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
               <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-                {typeof project.image === "string" ? (
+                
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -135,9 +132,6 @@ export const Portfolio = () => {
                     loading={idx < 3 ? "eager" : "lazy"}
                     priority={idx < 3}
                   />
-                ) : (
-                  project.image
-                )}
               </div>
               <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
               <p className="text-[#010d3e]">{project.tagline}</p>
