@@ -42,8 +42,18 @@ export const Hero = () => {
               We don’t just design websites — we craft digital experiences that sell, scale, and stick. From pixel-perfect UI to blazing performance, we bring your brand to life online.
             </p>
             <div className="flex gap-1 items-center mt-[30px]">
-              <button className="btn btn-primary">Request a Proposal</button>
-              <button className="btn btn-text gap-1">
+              <button className="btn btn-primary" onClick={() => {
+                  const element = document.getElementById("contactform");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}>Request a Proposal</button>
+              <button className="btn btn-text gap-1" onClick={() => {
+                  const element = document.getElementById("portfolio");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}>
                 <span>See Our Work</span>
                 <ArrowIcon className="h-5 w-5" />
               </button>

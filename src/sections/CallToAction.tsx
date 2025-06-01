@@ -6,7 +6,6 @@ import starImage from "@/assets/star.png";
 import springImage from "@/assets/spring.png";
 import { useToast } from "@/hooks/use-toast"
 
-
 export const CallToAction = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -58,8 +57,9 @@ export const CallToAction = () => {
 
   return (
     <section
+    id="contactform"
       ref={sectionRef}
-      className="bg-gradient-to-b from-white to-[#D2DCFF] py-24 overflow-x-clip relative"
+      className="bg-gradient-to-b from-white to-[#D2DCFF] py-5 overflow-x-clip relative"
     >
       <div className="container relative z-10">
         <div className="section-heading text-center">

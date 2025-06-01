@@ -19,14 +19,14 @@ export const Header = () => {
         <div className="container">
           <div className="flex items-center justify-between">
             <Link href='/'>
-            <Image src={Logo} alt="Saas Logo" height={120} width={120} />
+              <Image src={Logo} alt="Saas Logo" height={120} width={120} />
             </Link>
             <MenuIcon className="h-5 w-5 md:hidden" />
 
             <nav className="hidden md:flex gap-6 text-black/80 items-center">
-            <a href="#">Home</a>
-              <a href="#">Portfolio</a>
-              <a href="#">Blogs</a>
+              <a href="/">Home</a>
+              <a href="#portfolio">Portfolio</a>
+              <a href="#blogs">Blogs</a>
               <a href="/contact">Contact</a>
               <a href="/about">About</a>
             </nav>

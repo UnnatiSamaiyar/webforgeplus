@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const BlogCarousel = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white" id="blogs">
       <div className="container relative z-10">
         <div className="section-heading text-center">
           <div className="tag mx-auto">Our Blogs</div>
@@ -24,44 +24,21 @@ export const BlogCarousel = () => {
               title: "Designing for the Future",
               tagline: "The latest trends in UI/UX design.",
               image: "",
-              author: "John Doe",
-              date: "March 15, 2025",
+              date: "May 25, 2025",
             },
             {
               title: "Understanding SaaS Architecture",
               tagline: "Building scalable and secure systems.",
               image: "",
-              author: "Jane Smith",
-              date: "April 12, 2025",
+              date: "May 28, 2025",
             },
             {
               title: "Boost Your SEO Rankings",
               tagline: "SEO strategies that work in 2025.",
               image: "",
-              author: "Samuel Lee",
-              date: "February 22, 2025",
+              date: "May 31, 2025",
             },
-            {
-              title: "The Future of Mobile Apps",
-              tagline: "How mobile development is evolving.",
-              image: "",
-              author: "Alice Brown",
-              date: "January 30, 2025",
-            },
-            {
-              title: "Web Accessibility Best Practices",
-              tagline: "Making your websites more inclusive.",
-              image: "",
-              author: "Michael Clark",
-              date: "December 18, 2024",
-            },
-            {
-              title: "Blockchain in Modern Web Apps",
-              tagline: "Exploring the potential of blockchain technology.",
-              image: "",
-              author: "Sophia Davis",
-              date: "November 25, 2024",
-            },
+            
           ].map((blog, idx) => (
             <motion.div
               key={idx}
@@ -79,7 +56,7 @@ export const BlogCarousel = () => {
               <h3 className="text-2xl font-semibold mb-2">{blog.title}</h3>
               <p className="text-[#010d3e] mb-2">{blog.tagline}</p>
               <p className="text-sm text-gray-500">
-                By {blog.author} | {blog.date}
+                By WebForgePlus Team | {blog.date}
               </p>
               <button className="mt-4 text-blue-500 hover:underline">
                 Know More
