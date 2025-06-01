@@ -47,7 +47,7 @@ const portfolioData = {
         link: "https://gym.webforgeplus.in/",
       },
       {
-        id: "lp-003",
+        id: "lp-004",
         name: "Lustra Jewels",
         image: Jwellery,
         summary: "A premium product showcase landing page tailored for an online jewelry brand.",
