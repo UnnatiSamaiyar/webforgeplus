@@ -111,17 +111,17 @@ const portfolioData = {
     projects: [
       {
         id: "ec-001",
-        name: "Vrone",
-        image: "/images/portfolio/ecommerce/trendz.png",
+        name: "EchoWear",
+        image: Cosmo,
         summary: "Fashion brand with seamless mobile experience.",
         link: "/projects/ec-001",
       },
       {
         id: "ec-002",
         name: "Cosmo",
-        image: "/images/portfolio/ecommerce/techiemart.png",
+        image: Cosmo,
         summary: "Argan-infused care for soft, healthy, frizz-free hair.",
-        link: Cosmo,
+        link: "https://cosmo.webforgeplus.in/",
       },
     ],
   },
@@ -203,7 +203,7 @@ const portfolioData = {
 
 
 export default function PortfolioDetail({ params }: { params: { slug: string } }) {
-  const data = portfolioData[params.slug];
+  const data = portfolioData[params.slug as keyof typeof portfolioData];
   if (!data) return notFound();
 
   return (
