@@ -31,13 +31,13 @@ export const Portfolio = () => {
       title: "Landing Page",
       slug: "landing-page",
       tagline: "High-converting pages that capture leads",
-      image: Landingpage ,
+      image: Landingpage,
     },
     {
       title: "Corporate Website",
       slug: "corporate-website",
       tagline: "Professional websites for powerful brands",
-      image: Corporate ,
+      image: Corporate,
     },
     {
       title: "E-commerce Platform",
@@ -45,7 +45,7 @@ export const Portfolio = () => {
       tagline: "Drive sales with a seamless shopping experience",
       image: Ecommerce,
     },
-    
+
   ];
 
   const future = [
@@ -86,59 +86,61 @@ export const Portfolio = () => {
         </div>
 
         {/* Portfolio Cards */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 px-4 md:px-0 relative z-10">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8 lg:px-0 relative z-10">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
               onClick={() => router.push(`/portfolio/${project.slug}`)}
-              className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+              className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
               <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-                
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading={idx < 3 ? "eager" : "lazy"}
-                    priority={idx < 3}
-                  />
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading={idx < 3 ? "eager" : "lazy"}
+                  priority={idx < 3}
+                />
               </div>
-              <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-[#010d3e]">{project.tagline}</p>
-              <button className="mt-4 text-blue-500 hover:underline" onClick={() => router.push(`/portfolio/${project.slug}`)}>
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-[#010d3e] text-sm sm:text-base md:text-lg">{project.tagline}</p>
+              <button
+                className="mt-4 text-blue-500 hover:underline text-sm sm:text-base"
+                onClick={() => router.push(`/portfolio/${project.slug}`)}
+              >
                 Explore
               </button>
             </motion.div>
           ))}
-           {future.map((project, idx) => (
+
+          {future.map((project, idx) => (
             <motion.div
               key={idx}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+              className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
             >
               <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-                
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading={idx < 3 ? "eager" : "lazy"}
-                    priority={idx < 3}
-                  />
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading={idx < 3 ? "eager" : "lazy"}
+                  priority={idx < 3}
+                />
               </div>
-              <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-[#010d3e]">{project.tagline}</p>
-              
+              <h3 className="text-xl sm:text-2xl font-semibold mb-2">{project.title}</h3>
+              <p className="text-[#010d3e] text-sm sm:text-base md:text-lg">{project.tagline}</p>
             </motion.div>
           ))}
         </div>
+
       </div>
 
       {/* Decorative motion elements */}

@@ -114,7 +114,7 @@ const portfolioData = {
         name: "EchoWear",
         image: Cosmo,
         summary: "Fashion brand with seamless mobile experience.",
-        link: "/projects/ec-001",
+        link: "https://echowear.webforgeplus.in/",
       },
       {
         id: "ec-002",
@@ -220,7 +220,7 @@ export default function PortfolioDetail({ params }: { params: { slug: string } }
 
 
 
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 px-4 md:px-0 relative z-10">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0 relative z-10">
             {data.projects.map((project) => (
               <>
                 <Link href={project.link}
