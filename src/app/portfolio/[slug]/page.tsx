@@ -17,6 +17,7 @@ import Sbtechentreprises from '@/assets/portfolio/sbtechenterprise.png'
 import Sbtechprintingpress from '@/assets/portfolio/sbtechprintingpress.png'
 import Timewatch from '@/assets/portfolio/timewatch.png'
 import DreamNest from '@/assets/portfolio/dreamnest.png'
+import Echowear from '@/assets/portfolio/echowear.png'
 
 const portfolioData = {
   "landing-page": {
@@ -112,7 +113,7 @@ const portfolioData = {
       {
         id: "ec-001",
         name: "EchoWear",
-        image: Cosmo,
+        image: Echowear,
         summary: "Fashion brand with seamless mobile experience.",
         link: "https://echowear.webforgeplus.in/",
       },

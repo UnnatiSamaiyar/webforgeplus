@@ -52,7 +52,7 @@ export const Header = () => {
             <nav className="hidden md:flex gap-6 text-black/80 items-center">
               <a href="/">Home</a>
               <a href="#portfolio">Portfolio</a>
-              <a href="#blogs">Blogs</a>
+              {/* <a href="#blogs">Blogs</a> */}
               <a href="/contact">Contact</a>
               <a href="/about">About</a>
             </nav>

@@ -1,4 +1,3 @@
-
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
@@ -9,6 +8,7 @@ import { Pricing } from "@/sections/Pricing";
 import { ProductShowcase } from "@/sections/ProductShowcase";
 
 export default function Home() {
+  
   return (
     <>
       <Header />

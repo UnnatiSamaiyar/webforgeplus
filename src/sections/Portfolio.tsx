@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import pyramidImage from "@/assets/pyramid.png";
 import tubeImage from "@/assets/tube.png";
@@ -68,6 +68,12 @@ export const Portfolio = () => {
       image: Appdev,
     },
   ]
+  const [loadingSlug, setLoadingSlug] = useState<string | null>(null);
+
+  const handleClick = (slug: string) => {
+    setLoadingSlug(slug);
+    router.push(`/portfolio/${slug}`);
+  };
 
   return (
     <section
@@ -87,35 +93,38 @@ export const Portfolio = () => {
 
         {/* Portfolio Cards */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8 lg:px-0 relative z-10">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              onClick={() => router.push(`/portfolio/${project.slug}`)}
-              className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
-            >
-              <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  loading={idx < 3 ? "eager" : "lazy"}
-                  priority={idx < 3}
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-[#010d3e] text-sm sm:text-base md:text-lg">{project.tagline}</p>
-              <button
-                className="mt-4 text-blue-500 hover:underline text-sm sm:text-base"
-                onClick={() => router.push(`/portfolio/${project.slug}`)}
-              >
-                Explore
-              </button>
-            </motion.div>
-          ))}
+           {projects.map((project, idx) => (
+        <motion.div
+          key={idx}
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleClick(project.slug)}
+          className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+        >
+          <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              loading={idx < 3 ? "eager" : "lazy"}
+              priority={idx < 3}
+            />
+          </div>
+          <h3 className="text-xl sm:text-2xl font-semibold mb-2">{project.title}</h3>
+          <p className="text-[#010d3e] text-sm sm:text-base md:text-lg">{project.tagline}</p>
+          <button
+            className="mt-4 text-blue-500 hover:underline text-sm sm:text-base"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent parent onClick from firing twice
+              handleClick(project.slug);
+            }}
+          >
+            {loadingSlug === project.slug ? "Loading..." : "Explore"}
+          </button>
+        </motion.div>
+      ))}
 
           {future.map((project, idx) => (
             <motion.div

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import starImage from "@/assets/star.png";
 import springImage from "@/assets/spring.png";
 import { useToast } from "@/hooks/use-toast"
@@ -13,51 +13,56 @@ export const CallToAction = () => {
     offset: ["start end", "end start"],
   });
   const { toast } = useToast()
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const translateY = useTransform(scrollYProgress, [0, 1], [150, -150]);
   // Add this inside CallToAction component, above return
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const formData = new FormData(e.currentTarget);
-  const data = Object.fromEntries(formData.entries());
-
-  try {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. We'll get back to you shortly.",
-        variant: "default", // or "success" if you have variants configured
+    e.preventDefault();
+    const form = e.currentTarget; // 👈 Save the reference early
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      e.currentTarget.reset();
-    } else {
+      if (res.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. We'll get back to you shortly.",
+          variant: "default",
+        });
+
+        form.reset(); // ✅ This is now safe
+      } else {
+        toast({
+          title: "Something went wrong.",
+          description: "We couldn’t send your message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error(error);
       toast({
-        title: "Something went wrong.",
-        description: "We couldn’t send your message. Please try again later.",
+        title: "Unexpected Error",
+        description: "Something broke. Try again later.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false); // always stop loading
     }
-  } catch (error) {
-    console.error(error);
-    toast({
-      title: "Unexpected Error",
-      description: "Something broke. Try again later.",
-      variant: "destructive",
-    });
-  }
-};
+  };
+
 
 
 
   return (
     <section
-    id="contactform"
+      id="contactform"
       ref={sectionRef}
       className="bg-gradient-to-b from-white to-[#D2DCFF] py-5 overflow-x-clip relative"
     >
@@ -158,10 +163,38 @@ export const CallToAction = () => {
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#001e80] text-white rounded-lg hover:bg-[#001b70] transition-all"
+              className="w-full py-3 bg-[#001e80] text-white rounded-lg hover:bg-[#001b70] transition-all flex items-center justify-center gap-2"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? (
+                <>
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                    />
+                  </svg>
+                  <span>Sending...</span>
+                </>
+              ) : (
+                "Send Message"
+              )}
             </button>
+
           </form>
         </div>
       </div>
