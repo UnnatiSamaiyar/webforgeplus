@@ -11,12 +11,11 @@ export const Footer = () => {
     <footer className="bg-black text-[#BCBCBC] text-sm py-10 text-center">
       <div className="container">
         <div className="inline-flex relative before:content-[''] before:top-2 before:bottom-0 before:w-full before:blur before:bg-[linear-gradient(to_right,#ffffff,#e0e0e0)] before:absolute">
-          <Image src={logo} height={65} alt="SaaS logo" className="relative" />
+          <Link href="/"><Image src={logo} height={65} alt="WebForgePlus logo" className="relative" /></Link> 
         </div>
 
         <nav className="flex flex-col md:flex-row md:justify-center gap-6 mt-6">
-          <Link href="">Portfolio</Link>
-          <Link href="">Blogs</Link>
+          
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
           <Link href="/terms">Terms of Use</Link>

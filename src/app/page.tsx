@@ -1,4 +1,4 @@
-import { BlogCarousel } from "@/sections/BlogsCarousel";
+
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
@@ -7,7 +7,6 @@ import { LogoTicker } from "@/sections/LogoTicker";
 import { Portfolio } from "@/sections/Portfolio";
 import { Pricing } from "@/sections/Pricing";
 import { ProductShowcase } from "@/sections/ProductShowcase";
-import { Testimonials } from "@/sections/Testimonials";
 
 export default function Home() {
   return (
@@ -20,7 +19,6 @@ export default function Home() {
       <Portfolio />
       <LogoTicker />
       <CallToAction />
-      <BlogCarousel />
       <Footer />
     </>
   );
