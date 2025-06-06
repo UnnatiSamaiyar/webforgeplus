@@ -1,6 +1,5 @@
 import AboutContent from "@/sections/AboutContent";
 import AboutHeader from "@/sections/AboutHeader";
-import { BlogCarousel } from "@/sections/BlogsCarousel";
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
@@ -17,7 +16,6 @@ export default function About() {
         <CallToAction />
         <LogoTicker />
         <Portfolio />
-        <BlogCarousel />
         <Footer />
         </>
     );

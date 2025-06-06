@@ -29,7 +29,6 @@ export const Header = () => {
   const navItems = [
     { icon: Home, label: "Home", href: "/" },
     { icon: Folder, label: "Portfolio", href: "#portfolio" },
-    { icon: Newspaper, label: "Blogs", href: "#blogs" },
     { icon: Phone, label: "Contact", href: "/contact" },
     { icon: Info, label: "About", href: "/about" },
   ];
