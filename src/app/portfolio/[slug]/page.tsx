@@ -65,34 +65,34 @@ const portfolioData = {
       "Built with scalability and brand consistency in mind, our corporate websites are tailored to reflect your company’s mission, culture, and services with elegance and trust.",
     projects: [
 
-      {
-        id: "cw-001",
-        name: "SBTech Printing Press",
-        image: Sbtechprintingpress,
-        summary: "High-quality commercial printing service based in Greater Noida.",
-        link: "https://sbtechprintingpress.in/"
-      },
-      {
-        id: "cw-002",
-        name: "SBTech Enterprises",
-        image: Sbtechentreprises,
-        summary: "",
-        link: "https://sbtechenterprises.com/"
-      },
-      {
-        id: "cw-003",
-        name: "Cashrivo",
-        image: Cashrivo,
-        summary: "Engaging platform for digital coupons, and deals.",
-        link: "https://cashrivo.com/",
-      },
-      {
-        id: "cw-004",
-        name: "TimeWatch Infocom",
-        image: Timewatch,
-        summary: "Technology site for biometric access and inspection control systems.",
-        link: "https://www.timewatchindia.com/",
-      },
+      // {
+      //   id: "cw-001",
+      //   name: "SBTech Printing Press",
+      //   image: Sbtechprintingpress,
+      //   summary: "High-quality commercial printing service based in Greater Noida.",
+      //   link: "https://sbtechprintingpress.in/"
+      // },
+      // {
+      //   id: "cw-002",
+      //   name: "SBTech Enterprises",
+      //   image: Sbtechentreprises,
+      //   summary: "",
+      //   link: "https://sbtechenterprises.com/"
+      // },
+      // {
+      //   id: "cw-003",
+      //   name: "Cashrivo",
+      //   image: Cashrivo,
+      //   summary: "Engaging platform for digital coupons, and deals.",
+      //   link: "https://cashrivo.com/",
+      // },
+      // {
+      //   id: "cw-004",
+      //   name: "TimeWatch Infocom",
+      //   image: Timewatch,
+      //   summary: "Technology site for biometric access and inspection control systems.",
+      //   link: "https://www.timewatchindia.com/",
+      // },
       {
         id: "cw-005",
         name: "DreamNest",
