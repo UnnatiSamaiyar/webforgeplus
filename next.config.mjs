@@ -17,7 +17,7 @@ const nextConfig = {
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        resourceQuery: { not: [/url/] },
         use: ["@svgr/webpack"],
       }
     );
@@ -28,7 +28,31 @@ const nextConfig = {
     return config;
   },
 
-  // ...other config
+  // ✅ Redirect rules
+  async redirects() {
+    return [
+      // Remove trailing slash
+      {
+        source: "/:path*/",
+        destination: "/:path*",
+        permanent: true,
+      },
+      // Force non-www domain
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.webforgeplus.in" }],
+        destination: "https://webforgeplus.in/:path*",
+        permanent: true,
+      },
+      // Force HTTPS (if needed, but on Vercel it's default)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "webforgeplus.in" }],
+        destination: "https://webforgeplus.in/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

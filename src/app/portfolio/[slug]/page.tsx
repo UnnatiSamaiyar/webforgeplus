@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
@@ -18,6 +19,7 @@ import Sbtechprintingpress from '@/assets/portfolio/sbtechprintingpress.png'
 import Timewatch from '@/assets/portfolio/timewatch.png'
 import DreamNest from '@/assets/portfolio/dreamnest.png'
 import Echowear from '@/assets/portfolio/echowear.png'
+import SEO from "@/sections/SEO";
 
 const portfolioData = {
   "landing-page": {
@@ -199,16 +201,24 @@ const portfolioData = {
   },
 };
 
-
-
-
-
 export default function PortfolioDetail({ params }: { params: { slug: string } }) {
+  const router = useRouter();
+  const { slug } = router.query;
   const data = portfolioData[params.slug as keyof typeof portfolioData];
   if (!data) return notFound();
+  
+
+  // Apna base domain set karo
+  const baseUrl = "https://www.webforgeplus.in";
+  const canonicalUrl = `${baseUrl}/portfolio/${slug}`;
 
   return (
     <>
+     <SEO
+        title={`${data.title} | Portfolio`}
+        description={data.tagline}
+        canonical={canonicalUrl}
+      />
       <Header />
       <SinglePortfolioHero />
       <section className="bg-gradient-to-b from-[#FFFFFF] to-[#D2DCFF] py-24 overflow-visible relative" id="our-work">
