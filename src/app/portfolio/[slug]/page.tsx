@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CallToAction } from "@/sections/CallToAction";
 import { Footer } from "@/sections/Footer";
 import { Header } from "@/sections/Header";
@@ -8,17 +8,17 @@ import { SinglePortfolioHero } from "@/sections/SinglePortfolioHero";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Cashrivo from '@/assets/portfolio/cashrivo.png'
-import Cosmo from '@/assets/portfolio/cosmo.png'
-import Gym from '@/assets/portfolio/gym.png'
-import Jwellery from '@/assets/portfolio/jwellery.png'
-import Realestate from '@/assets/portfolio/realestate.png'
-import Resturant from '@/assets/portfolio/resturant.png'
-import Sbtechentreprises from '@/assets/portfolio/sbtechenterprise.png'
-import Sbtechprintingpress from '@/assets/portfolio/sbtechprintingpress.png'
-import Timewatch from '@/assets/portfolio/timewatch.png'
-import DreamNest from '@/assets/portfolio/dreamnest.png'
-import Echowear from '@/assets/portfolio/echowear.png'
+import Cashrivo from "@/assets/portfolio/cashrivo.png";
+import Cosmo from "@/assets/portfolio/cosmo.png";
+import Gym from "@/assets/portfolio/gym.png";
+import Jwellery from "@/assets/portfolio/jwellery.png";
+import Realestate from "@/assets/portfolio/realestate.png";
+import Resturant from "@/assets/portfolio/resturant.png";
+import Sbtechentreprises from "@/assets/portfolio/sbtechenterprise.png";
+import Sbtechprintingpress from "@/assets/portfolio/sbtechprintingpress.png";
+import Timewatch from "@/assets/portfolio/timewatch.png";
+import DreamNest from "@/assets/portfolio/dreamnest.png";
+import Echowear from "@/assets/portfolio/echowear.png";
 import SEO from "@/sections/SEO";
 
 const portfolioData = {
@@ -32,31 +32,34 @@ const portfolioData = {
         id: "lp-001",
         name: "PropertyNest",
         image: Realestate,
-        summary: "A conversion-focused landing page for a modern real estate listing platform.",
+        summary:
+          "A conversion-focused landing page for a modern real estate listing platform.",
         link: "https://realestate.webforgeplus.in/",
       },
       {
         id: "lp-002",
         name: "BrewBite Cafe",
         image: Resturant,
-        summary: "Designed to highlight BrewBite Cafe’s menu, and increase engagement.",
+        summary:
+          "Designed to highlight BrewBite Cafe’s menu, and increase engagement.",
         link: "https://resturant.webforgeplus.in/",
       },
       {
         id: "lp-003",
         name: "IronPulse Fitness",
         image: Gym,
-        summary: "An engaging landing page designed to attract gym memberships and class signups.",
+        summary:
+          "An engaging landing page designed to attract gym memberships and class signups.",
         link: "https://gym.webforgeplus.in/",
       },
       {
         id: "lp-004",
         name: "Lustra Jewels",
         image: Jwellery,
-        summary: "A premium product showcase landing page tailored for an online jewelry brand.",
+        summary:
+          "A premium product showcase landing page tailored for an online jewelry brand.",
         link: "https://jwellery.webforgeplus.in/",
       },
-
     ],
   },
 
@@ -66,16 +69,14 @@ const portfolioData = {
     description:
       "Built with scalability and brand consistency in mind, our corporate websites are tailored to reflect your company’s mission, culture, and services with elegance and trust.",
     projects: [
-
-      
       {
         id: "cw-005",
         name: "DreamNest",
         image: DreamNest,
-        summary: "Modern, responsive platform showcasing premium real estate listings.",
+        summary:
+          "Modern, responsive platform showcasing premium real estate listings.",
         link: "https://dreamnest.webforgeplus.in/",
-      }
-
+      },
     ],
   },
 
@@ -115,7 +116,6 @@ const portfolioData = {
         summary: "Team collaboration tool with real-time editing.",
         link: "https://storeit-hazel.vercel.app/",
       },
-
     ],
   },
 
@@ -169,61 +169,74 @@ const portfolioData = {
         summary: "Fitness tracking app with personalized goals.",
         link: "/projects/ma-001",
       },
-
     ],
   },
 };
 
-export default function PortfolioDetail({ params }: { params: { slug: string } }) {
-  const router = useRouter();
-  const { slug } = router.query;
-  const data = portfolioData[params.slug as keyof typeof portfolioData];
-  if (!data) return notFound();
-  
+interface Props {
+  params: { slug: string };
+}
 
-  // Apna base domain set karo
+export default function PortfolioDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const data = portfolioData[slug as keyof typeof portfolioData];
+
+  if (!data) return notFound();
+
   const baseUrl = "https://www.webforgeplus.in";
   const canonicalUrl = `${baseUrl}/portfolio/${slug}`;
 
   return (
     <>
-     <SEO
+      <SEO
         title={`${data.title} | Portfolio`}
         description={data.tagline}
         canonical={canonicalUrl}
       />
       <Header />
       <SinglePortfolioHero />
-      <section className="bg-gradient-to-b from-[#FFFFFF] to-[#D2DCFF] py-24 overflow-visible relative" id="our-work">
+      <section
+        className="bg-gradient-to-b from-[#FFFFFF] to-[#D2DCFF] py-24 overflow-visible relative"
+        id="our-work"
+      >
         <div className="container relative z-10">
           <div className="section-heading text-center">
             <div className="tag mx-auto">Our Portfolio</div>
             <h1 className="section-title mt-5">{data.title}</h1>
-            <p className="section-description mt-5 max-w-2xl mx-auto">{data.tagline}</p>
+            <p className="section-description mt-5 max-w-2xl mx-auto">
+              {data.tagline}
+            </p>
           </div>
-
-
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-0 relative z-10">
             {data.projects.map((project) => (
               <>
-                <Link href={project.link}
+                <Link
+                  href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 ">
-                  <div key={project.id} className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer">
+                  className="mt-4 "
+                >
+                  <div
+                    key={project.id}
+                    className="bg-white/30 backdrop-blur-md border border-white/40 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                  >
                     <div className="relative w-full h-64 rounded-xl mb-4 overflow-hidden">
-
                       <Image
                         src={project.image}
                         alt={project.name}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
                       />
                     </div>
-                    <h3 className="text-2xl font-semibold mb-2">{project.name}</h3>
+                    <h3 className="text-2xl font-semibold mb-2">
+                      {project.name}
+                    </h3>
                     <p className="text-[#010d3e] mb-2">{project.summary}</p>
                     <Link
                       href={project.link}
@@ -233,11 +246,9 @@ export default function PortfolioDetail({ params }: { params: { slug: string } }
                     >
                       View Project →
                     </Link>
-
                   </div>
                 </Link>
               </>
-
             ))}
           </div>
         </div>
