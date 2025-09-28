@@ -70,6 +70,22 @@ const portfolioData = {
       "Built with scalability and brand consistency in mind, our corporate websites are tailored to reflect your company’s mission, culture, and services with elegance and trust.",
     projects: [
       {
+        id: "cw-001",
+        name: "SB Tech Enterprises",
+        image: Sbtechentreprises,
+        summary:
+          "Supplier of premium, affordable ACP boards transforming interiors with style.",
+        link: "https://sbtechenterprises.com/",
+      },
+      {
+        id: "cw-002",
+        name: "SB Tech Printing Press",
+        image: Sbtechprintingpress,
+        summary:
+          "Leading Greater Noida print-shop delivering digital, offset, signage & merchandise solutions..",
+        link: "https://sbtechprintingpress.in/",
+      },
+      {
         id: "cw-005",
         name: "DreamNest",
         image: DreamNest,
