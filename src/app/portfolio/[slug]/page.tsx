@@ -20,6 +20,7 @@ import Timewatch from "@/assets/portfolio/timewatch.png";
 import DreamNest from "@/assets/portfolio/dreamnest.png";
 import Echowear from "@/assets/portfolio/echowear.png";
 import SEO from "@/sections/SEO";
+import { Metadata } from "next";
 
 const portfolioData = {
   "landing-page": {
@@ -192,6 +193,13 @@ const portfolioData = {
 interface Props {
   params: { slug: string };
 }
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function PortfolioDetail({
   params,
